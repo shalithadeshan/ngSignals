@@ -1,64 +1,61 @@
-<!-- angular 17 for loop -->
-@for(user of users(); track $index){
-<div>{{ user.name }}</div>
-<div>{{ user.role }}</div>
-} @empty {
-<div>
-  <h1>No users found</h1>
-</div>
-} 
-
- <!-- angular 17 if else block -->
-@if (user.role === 'admin') {
-<div>
-  <h1>Admin</h1>
-</div>
-} @else if (user.role === 'user') {
-<div>
-  <h1>User</h1>
-</div>
-} @else {
-<div>
-  <h1>QA</h1>
-</div>
-}
-
-<!-- angular 17 switch case block -->
-@switch (user.role) {
-    @case ('admin') {
-        <div>
-          <h1>Admin</h1>
-        </div>
+<div class="row">
+  <div class="col-6">
+    <!-- angular 17 for loop -->
+    @for(user of users(); track $index){
+    <div>{{ user.name }}</div>
+    <div>{{ user.role }}</div>
+    } @empty {
+    <div>
+      <h1>No users found</h1>
+    </div>
     }
-    @case ('user') {
-        <div>
-          <h1>User</h1>
-        </div>
+
+    <!-- angular 17 if else block -->
+    @if (user.role === 'admin') {
+    <div>
+      <h1>Admin</h1>
+    </div>
+    } @else if (user.role === 'user') {
+    <div>
+      <h1>User</h1>
+    </div>
+    } @else {
+    <div>
+      <h1>QA</h1>
+    </div>
     }
-    @default {
-        <div>
-          <h1>QA</h1>
-        </div>
-    }
-}
 
-<!-- this defer block will be executed after the component is loaded -->
+    <!-- angular 17 switch case block -->
+    @switch (user.role) { @case ('admin') {
+    <div>
+      <h1>Admin</h1>
+    </div>
+    } @case ('user') {
+    <div>
+      <h1>User</h1>
+    </div>
+    } @default {
+    <div>
+      <h1>QA</h1>
+    </div>
+    } }
 
-<!-- @defer (on idle) {} this is the default behavior -->
-<!-- @defer (on viewport) {} this will be executed when the component is in viewport and it need placeholder -->
+    <!-- this defer block will be executed after the component is loaded -->
 
-@defer(on viewport) {
+    <!-- @defer (on idle) {} this is the default behavior -->
+    <!-- @defer (on viewport) {} this will be executed when the component is in viewport and it need placeholder -->
+
+    @defer(on viewport) {
     <div>defer</div>
-}
-
-@loading(after 100ms; minimum 1000ms) {
+    } @loading(after 100ms; minimum 1000ms) {
     <h1>Loading...</h1>
-}
-
-@placeholder(minimum 1000ms) {
+    } @placeholder(minimum 1000ms) {
     <div>placeholder</div>
-}
-
-@error {
+    } @error {
     <div>Error</div>
-}
+    }
+  </div>
+  <div class="col-6">
+    <app-home></app-home>
+  </div>
+</div>

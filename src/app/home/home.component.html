@@ -1,1 +1,19 @@
-<p>home works!</p>
+<h1>Shopping Cart</h1>
+<select
+  [ngModel]="quantity()"
+  (change)="onQuantitySelected($any($event.target).value)"
+>
+  <option disabled value="">--Select a Quantity--</option>
+  <option *ngFor="let quantity of quantities()" [value]="quantity">
+    {{ quantity }}
+  </option>
+</select>
+<div>
+    Vehicle: {{selectedVehicle().name}}
+</div>
+<div>
+    Price: {{selectedVehicle().price | currency: 'Rs.'}}
+</div>
+<div style="font-weight: 600;">
+    Total: {{exPrice() | currency :'Rs.'}}
+</div>
